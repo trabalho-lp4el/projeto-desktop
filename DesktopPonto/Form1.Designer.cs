@@ -1,4 +1,6 @@
-﻿namespace DesktopPonto
+﻿using System;
+
+namespace DesktopPonto
 {
     partial class F_Principal
     {
@@ -31,8 +33,10 @@
             this.tb_nome = new System.Windows.Forms.TextBox();
             this.tb_LISTA = new System.Windows.Forms.TextBox();
             this.btn_add = new System.Windows.Forms.Button();
-            this.btn_limpar = new System.Windows.Forms.Button();
+            this.btn_remover = new System.Windows.Forms.Button();
             this.lb_nome = new System.Windows.Forms.Label();
+            this.ListNames = new System.Windows.Forms.ListBox();
+            this.cmdAddLista = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tb_nome
@@ -60,15 +64,15 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // btn_limpar
+            // btn_remover
             // 
-            this.btn_limpar.Location = new System.Drawing.Point(16, 172);
-            this.btn_limpar.Name = "btn_limpar";
-            this.btn_limpar.Size = new System.Drawing.Size(232, 23);
-            this.btn_limpar.TabIndex = 6;
-            this.btn_limpar.Text = "CLEAN";
-            this.btn_limpar.UseVisualStyleBackColor = true;
-            this.btn_limpar.Click += new System.EventHandler(this.btn_limpar_Click);
+            this.btn_remover.Location = new System.Drawing.Point(266, 174);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(172, 23);
+            this.btn_remover.TabIndex = 6;
+            this.btn_remover.Text = "REMOVE";
+            this.btn_remover.UseVisualStyleBackColor = true;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
             // 
             // lb_nome
             // 
@@ -80,13 +84,33 @@
             this.lb_nome.Text = "adicione o nome abaixo: ";
             this.lb_nome.Click += new System.EventHandler(this.label1_Click);
             // 
+            // ListNames
+            // 
+            this.ListNames.FormattingEnabled = true;
+            this.ListNames.Location = new System.Drawing.Point(266, 47);
+            this.ListNames.Name = "ListNames";
+            this.ListNames.Size = new System.Drawing.Size(172, 121);
+            this.ListNames.TabIndex = 8;
+            // 
+            // cmdAddLista
+            // 
+            this.cmdAddLista.Location = new System.Drawing.Point(266, 20);
+            this.cmdAddLista.Name = "cmdAddLista";
+            this.cmdAddLista.Size = new System.Drawing.Size(70, 20);
+            this.cmdAddLista.TabIndex = 9;
+            this.cmdAddLista.Text = "ADD LIST";
+            this.cmdAddLista.UseVisualStyleBackColor = true;
+            this.cmdAddLista.Click += new System.EventHandler(this.cmdAddLista_Click);
+            // 
             // F_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 207);
+            this.ClientSize = new System.Drawing.Size(477, 228);
+            this.Controls.Add(this.cmdAddLista);
+            this.Controls.Add(this.ListNames);
             this.Controls.Add(this.lb_nome);
-            this.Controls.Add(this.btn_limpar);
+            this.Controls.Add(this.btn_remover);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.tb_LISTA);
             this.Controls.Add(this.tb_nome);
@@ -100,12 +124,19 @@
 
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
         private System.Windows.Forms.TextBox tb_nome;
         private System.Windows.Forms.TextBox tb_LISTA;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.Button btn_limpar;
+        private System.Windows.Forms.Button btn_remover;
         private System.Windows.Forms.Label lb_nome;
+        private System.Windows.Forms.ListBox ListNames;
+        private System.Windows.Forms.Button cmdAddLista;
     }
 }
 

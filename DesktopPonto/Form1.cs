@@ -16,14 +16,6 @@ namespace DesktopPonto
             InitializeComponent();
         }
 
-        private void btn_limpar_Click(object sender, EventArgs e)
-        {
-            // String txt;
-            // txt = tb_nome.Text;
-            // lb_textoteste.Text = txt;
-            //lb_textoteste.Text = tb_nome.Text;
-        }
-
         private void btn_add_Click(object sender, EventArgs e)
         {
             if(tb_nome.Text == "")
@@ -38,9 +30,20 @@ namespace DesktopPonto
             tb_nome.Focus();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void cmdAddLista_Click(object sender, EventArgs e)
         {
+            if (cmdAddLista.Text.Length > 0)
+                ListNames.Items.Add(tb_nome.Text);
+            else
+                MessageBox.Show("Digite um valor");
+        }
 
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+            if(ListNames.SelectedIndex.Equals(true))
+                ListNames.Items.RemoveAt(ListNames.SelectedIndex);
+            else
+                MessageBox.Show("Selecione um item da lista");
         }
     }
 }
