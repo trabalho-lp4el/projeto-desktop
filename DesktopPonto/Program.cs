@@ -15,7 +15,7 @@ namespace DesktopPonto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new F_Principal());
+            Application.Run(new TelaPrincipal());
         }
     }
 }

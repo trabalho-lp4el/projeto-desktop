@@ -7,3 +7,14 @@ C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csp
 C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
 C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
 C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.F_Principal.resources
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\bin\Debug\DesktopPonto.exe.config
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\bin\Debug\DesktopPonto.exe
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\bin\Debug\DesktopPonto.pdb
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csprojAssemblyReference.cache
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.F_Principal.resources
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Properties.Resources.resources
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.TelaPrincipal.resources
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.GenerateResource.cache
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.CoreCompileInputs.cache
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
