@@ -17,5 +17,15 @@ namespace DesktopPonto.Models
         {
             return solicitacao != null && !solicitacao.IsAplicado;
         }
+
+        public string getDataPonto()
+        {
+            return Horario.Date.ToString();
+        }
+
+        public string getHorarioPonto()
+        {
+            return Horario.ToString("HH:mm");
+        }
     }
 }
