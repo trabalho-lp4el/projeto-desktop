@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DesktopPonto.Models;
+using DesktopPonto.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +46,45 @@ namespace DesktopPonto
                 ListNames.Items.RemoveAt(ListNames.SelectedIndex);
             else
                 MessageBox.Show("Selecione um item da lista");
+        }
+
+
+
+
+
+
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            Controller controle = new Controller();
+            controle.acessar(txbLogin.Text, txbSenha.Text);
+            if (controle.mensagem.Equals(""))
+            {
+                if (controle.tem)
+                {
+                    MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BemVindo bv = new BemVindo();
+                    bv.Show();
+                }
+                else
+                {
+                   // MessageBox.Show("Login não encontrado", "Verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }else
+            {
+                MessageBox.Show(controle.mensagem);
+            }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            CadastreSe cad = new CadastreSe();
+            cad.Show();
         }
     }
 }

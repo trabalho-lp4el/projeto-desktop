@@ -43,15 +43,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DAL\Conexao.cs" />
+    <Compile Include="DAL\LoginDaoComandos.cs" />
+    <Compile Include="Modelo\Controller.cs" />
+    <Compile Include="Views\BemVindo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Views\BemVindo.Designer.cs">
+      <DependentUpon>BemVindo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Cadastro.Designer.cs">
+      <DependentUpon>Cadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Views\BemVindo.resx">
+      <DependentUpon>BemVindo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Cadastro.resx">
+      <DependentUpon>Cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -73,5 +94,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

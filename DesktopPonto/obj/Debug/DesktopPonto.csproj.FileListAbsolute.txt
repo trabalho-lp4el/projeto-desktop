@@ -7,3 +7,14 @@ C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csp
 C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
 C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
 C:\Users\user\Desktop\C#\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.F_Principal.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\bin\Debug\DesktopPonto.exe
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\bin\Debug\DesktopPonto.pdb
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csprojAssemblyReference.cache
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Views.BemVindo.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Views.CadastreSe.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.F_Principal.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Properties.Resources.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.GenerateResource.cache
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
