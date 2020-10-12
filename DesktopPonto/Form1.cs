@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace DesktopPonto
 {
@@ -44,6 +45,41 @@ namespace DesktopPonto
                 ListNames.Items.RemoveAt(ListNames.SelectedIndex);
             else
                 MessageBox.Show("Selecione um item da lista");
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM Usuarios WHERE nome=@nome AND senha=@senha";
+
+            Conexao conexao = new Conexao();
+            conexao.conectar();
+
+            OleDbCommand cmd = new OleDbCommand(query, conexao.cn);
+
+            cmd.Parameters.AddWithValue("@nome", txtUsuario.Text);
+            cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+
+            OleDbDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read()) {
+                Autenticacao.login(dr["nome"].ToString(), dr["senha"].ToString(), Convert.ToInt32(dr["nivel"]));
+                btnInformacoes.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Erro: Usuário e/ou senha não encontrados");
+            }
+        }
+
+        private void btnInformacoes_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Autenticacao.getUsario());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Autenticacao.logout();
+            btnInformacoes.Enabled = false;
         }
     }
 }
