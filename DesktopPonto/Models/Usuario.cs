@@ -10,7 +10,7 @@ namespace DesktopPonto.Models
     {
         public long Id { get; set; }
         public string Nome { get; set; }
-        public List<Ponto> Pontos { get; set; }
+        public virtual List<Ponto> Pontos { get; set; }
         public string Matricula { get; set; }
 
 

@@ -15,7 +15,7 @@ namespace DesktopPonto.Service
 
         public static async Task<Ponto> postAusencia(Ponto ponto)
         {
-            var response = await client.PostAsync($"http://localhost:5000/usuario/{ponto.IdUsuario}ponto", new StringContent(JsonConvert.SerializeObject(ponto)));
+            var response = await client.PostAsync($"http://localhost:5000/usuario/{ponto.UsuarioId}/ponto", new StringContent(JsonConvert.SerializeObject(ponto)));
             response.EnsureSuccessStatusCode();
             var responseBody = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Ponto>(responseBody);

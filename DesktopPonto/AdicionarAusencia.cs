@@ -38,12 +38,17 @@ namespace DesktopPonto
             }
 
             var pontoAusencia = new Ponto();
-            pontoAusencia.isAusencia = true;
+            pontoAusencia.IsAusencia = true;
             pontoAusencia.Horario = DateTime.ParseExact(data, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             try
             {
                 var response = await AusenciaService.postAusencia(pontoAusencia);
+                if(response == null)
+                {
+                    MessageBox.Show("Houve um problema na solicitação");
+                    return;
+                }
                 this.Close();
             } catch (Exception err)
             {
@@ -55,6 +60,11 @@ namespace DesktopPonto
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AdicionarAusencia_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,15 +10,21 @@ namespace DesktopPonto.Models
     {
         public long Id { get; set; }
         public DateTime Horario { get; set; }
-
-        public Solicitacao solicitacao { get; set; }
-
-        public Boolean isAusencia { get; set; }
-        public long IdUsuario { get; set; }
+        public virtual List<Solicitacao> Solicitacoes { get; set; }
+        public Boolean IsAusencia { get; set; }
+        public long UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public Boolean possuiSolicitacaoAtiva()
         {
-            return solicitacao != null && !solicitacao.IsAplicado;
+            foreach (Solicitacao s in Solicitacoes)
+            {
+                if(s.IsAplicado)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public string getDataPonto()

@@ -13,23 +13,35 @@ namespace DesktopPonto.Service
     {
         static readonly HttpClient client = new HttpClient();
 
-        public static async Task<Ponto> putPonto(Ponto ponto)
+        public static async Task<Solicitacao> postSolicitacao(Solicitacao solicitacao)
         {
             try
             {
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(ponto));
-                var response = await client.PutAsync("http://localhost:5000/ponto", content);
+                HttpContent content = new StringContent(JsonConvert.SerializeObject(solicitacao));
+                var response = await client.PostAsync("http://localhost:5000/solicitacao", content);
                 response.EnsureSuccessStatusCode();
                 var responseBody = await response.Content.ReadAsStringAsync();
 
+                return JsonConvert.DeserializeObject<Solicitacao>(responseBody);
+            } 
+            catch (HttpRequestException e)
+            {
+                return null;
+            }
+        }
+
+
+        public static async Task<Ponto> getPonto(long idPonto)
+        {
+            try
+            {
+                var responseBody = await client.GetStringAsync($"http://localhost:500/ponto/{idPonto}");
                 return JsonConvert.DeserializeObject<Ponto>(responseBody);
             } 
             catch (HttpRequestException e)
             {
                 return null;
             }
-           
-            
         }
 
     }

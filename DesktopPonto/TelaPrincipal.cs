@@ -48,14 +48,17 @@ namespace DesktopPonto
         {
             flPontos.SuspendLayout();
             //criaUsuario();
-            getUsuario();
-            setaValores();
+            Task.Run(()=> getUsuario()).Wait();
             flPontos.ResumeLayout(false);
 
         }
 
         private void setaValores()
         {
+            if(usuario == null)
+            {
+                return;
+            }
             lblNomeUsuario.Text = $"Usuario: {usuario.Nome}";
             criaCamposPonto();
             preencheDiaAtual();
@@ -67,6 +70,10 @@ namespace DesktopPonto
         }
         private void criaCamposPonto()
         {
+            if(usuario.Pontos == null)
+            {
+                return;
+            }
             usuario.Pontos.ForEach(ponto =>
             {
                 GroupBox gpBox = new GroupBox();
@@ -146,9 +153,10 @@ namespace DesktopPonto
         private void abrirTelaSolicitacao(object sender, EventArgs e,  Ponto ponto)
         {
             SolicitaMudanca formMudanca = new SolicitaMudanca(ponto);
-            formMudanca.FormClosed += (object senderForm, FormClosedEventArgs eForm) =>
+            formMudanca.FormClosed += async (object senderForm, FormClosedEventArgs eForm) =>
             {
                 this.Show();
+                Task.Run(() => getUsuario()).Wait();
             };
             //formMudanca.Show();
             this.Hide();
@@ -161,7 +169,7 @@ namespace DesktopPonto
             formAusencia.FormClosed += (object s, FormClosedEventArgs eForm) =>
             {
                 this.Show();
-                getUsuario();
+                Task.Run(() => getUsuario()).Wait();
             };
 
             this.Hide();
@@ -169,9 +177,18 @@ namespace DesktopPonto
 
         }
 
-        private async void getUsuario()
+        private async Task<Boolean> getUsuario()
         {
-            this.usuario = await UsuarioService.getUsuario(idUsuario);
+            try
+            {
+                this.usuario = await UsuarioService.getUsuario(idUsuario);
+                setaValores();
+                return true;
+            } catch(Exception e)
+            {
+                return false;
+            }
+            
         }
     }
 }

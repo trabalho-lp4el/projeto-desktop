@@ -11,8 +11,8 @@ namespace DesktopPonto.Models
         public long Id { get; set; }
         public bool IsAplicado { get; set; }
         public DateTime NovoHorario { get; set; }
-
-        public long IdPonto { get; set; }
+        public long PontoId { get; set; }
+        public virtual Ponto Ponto { get; set; }
 
     }
 }

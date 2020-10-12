@@ -1,4 +1,5 @@
 ﻿using DesktopPonto.Models;
+using DesktopPonto.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +23,13 @@ namespace DesktopPonto
 
         public SolicitaMudanca(Ponto ponto)
         {
-            this.ponto = ponto;
-            InitializeComponent();
+            preenchePonto(ponto);
+            InitializeComponent() ;
+        }
+
+        private async void preenchePonto(Ponto ponto)
+        {
+            this.ponto = await SolicitacaoService.getPonto(ponto.Id);
         }
         private void SolicitaMudanca_Load(object sender, EventArgs e)
         {
@@ -32,6 +38,10 @@ namespace DesktopPonto
 
         private void carregaInfos()
         {
+            if(ponto == null)
+            {
+                return;
+            }
             lblDataPonto.Text = ponto.getDataPonto();
             mtHorario.Text = ponto.getHorarioPonto();
         }
@@ -45,7 +55,7 @@ namespace DesktopPonto
         {
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             var isValid = TimeSpan.TryParse(mtHorario.Text, out var dummyOutput);
             if(!isValid)
@@ -55,8 +65,16 @@ namespace DesktopPonto
             }
             var novoHorario = $"{ponto.getDataPonto()} {mtHorario.Text}";
             solicitacao.NovoHorario = DateTime.ParseExact(novoHorario, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-            solicitacao.IdPonto = ponto.Id;
-            ponto.solicitacao = solicitacao;
+            solicitacao.PontoId = ponto.Id;
+           var response = await SolicitacaoService.postSolicitacao(solicitacao);
+
+            if(response == null)
+            {
+                MessageBox.Show("Houve um problema na solicitação");
+                return;
+            }
+
+            this.Close();
         }
     }
 }
