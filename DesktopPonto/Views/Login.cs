@@ -68,7 +68,7 @@ namespace DesktopPonto
                 }
                 else
                 {
-                   // MessageBox.Show("Login não encontrado", "Verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   //MessageBox.Show("Login não encontrado", "Verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }else
             {

@@ -29,6 +29,8 @@ namespace DesktopPonto.DAL
                 {
                     tem = true;
                 }
+                con.desconectar();
+                dr.Close();
             }
             catch (SqlException)
             {
@@ -39,7 +41,31 @@ namespace DesktopPonto.DAL
 
         public String cadastrar(String email, String senha, String confSenha)
         {
+            tem = false;
             //comandos SQL para inserir no banco retornando uma mensagem
+            if (senha.Equals(confSenha)) 
+            {
+                cmd.CommandText = "insert into logins values(@e, @s)";
+                cmd.Parameters.AddWithValue("@e", email);
+                cmd.Parameters.AddWithValue("@s", senha);
+
+                try 
+                {
+                    cmd.Connection = con.conectar();
+                    cmd.ExecuteNonQuery();
+                    con.desconectar();
+                    this.mensagem = "Cadastrado com Sucesso!";
+                    tem = true;
+                }
+                catch (SqlException)
+                {
+                    this.mensagem = "Erro com Banco de Dados";
+                }
+            }
+            else
+            {
+                this.mensagem = "Senhas não correspondem!";
+            }
             return mensagem;
         }
     }

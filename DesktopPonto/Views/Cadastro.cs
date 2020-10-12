@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopPonto.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,16 @@ namespace DesktopPonto.Views
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
-
+            Controller controle = new Controller();
+            String mensagem = controle.cadastrar(txbLogin.Text, txbSenha.Text, txbConfirmarSenha.Text);
+            if (controle.tem)//mensagem é de sucesso
+            {
+                MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(controle.mensagem);// mensagem de erro!
+            }
         }
     }
 }
