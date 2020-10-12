@@ -51,6 +51,7 @@
             this.btnAddAusencia.TabIndex = 1;
             this.btnAddAusencia.Text = "Adicionar Ausência";
             this.btnAddAusencia.UseVisualStyleBackColor = true;
+            this.btnAddAusencia.Click += new System.EventHandler(this.btnAddAusencia_Click);
             // 
             // groupBox5
             // 

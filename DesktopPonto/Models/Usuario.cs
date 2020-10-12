@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesktopPonto.Models
 {
-    class Usuario
+    public class Usuario
     {
         public long Id { get; set; }
         public string Nome { get; set; }

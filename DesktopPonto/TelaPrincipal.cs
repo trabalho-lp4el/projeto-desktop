@@ -1,4 +1,5 @@
 ﻿using DesktopPonto.Models;
+using DesktopPonto.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace DesktopPonto
     public partial class TelaPrincipal : Form
     {
         private Usuario usuario = new Usuario();
+        private long idUsuario = 1;
         public TelaPrincipal()
         {
             
@@ -45,7 +47,8 @@ namespace DesktopPonto
         private void TelaPrincipal_Load(object sender, EventArgs e)
         {
             flPontos.SuspendLayout();
-            criaUsuario();
+            //criaUsuario();
+            getUsuario();
             setaValores();
             flPontos.ResumeLayout(false);
 
@@ -56,28 +59,12 @@ namespace DesktopPonto
             lblNomeUsuario.Text = $"Usuario: {usuario.Nome}";
             criaCamposPonto();
             preencheDiaAtual();
-            iniciaThreadHorario();
         }
 
         private void preencheDiaAtual()
         {
-            lblCurrentDate.Text = $"Data: {getCurrentTime().ToString("dd/mm/yyyy")}";
+            lblCurrentDate.Text = $"Data: {getCurrentTime().Date.ToString("dd/MM/yyyy")}";
         }
-
-        private void iniciaThreadHorario()
-        {
-            //lblCurrentHour.Invoke((MethodInvoker)(() =>
-            //{
-            //    string currentTime = getCurrentTime().ToString("HH:mm");
-            //    if (lblCurrentHour.Text != currentTime)
-            //   {
-            //        lblCurrentHour.Text = currentTime;
-            //    }
-            //}));
-        }
-
-
-
         private void criaCamposPonto()
         {
             usuario.Pontos.ForEach(ponto =>
@@ -95,6 +82,12 @@ namespace DesktopPonto
 
                 Button botaoSolicitar = geraBotaoSolicitacao();
                 botaoSolicitar.Size = new Size(93, 23);
+
+                var innerPonto = ponto;
+                botaoSolicitar.Click += (sender, e) =>
+                {
+                    abrirTelaSolicitacao(sender, e, innerPonto);
+                };
 
                 gpBox.Controls.Add(labelData);
                 gpBox.Controls.Add(labelHorario);
@@ -148,6 +141,37 @@ namespace DesktopPonto
         {
             string current = getCurrentTime().ToString("HH:mm");
             lblCurrentHour.Text = current;
+        }
+
+        private void abrirTelaSolicitacao(object sender, EventArgs e,  Ponto ponto)
+        {
+            SolicitaMudanca formMudanca = new SolicitaMudanca(ponto);
+            formMudanca.FormClosed += (object senderForm, FormClosedEventArgs eForm) =>
+            {
+                this.Show();
+            };
+            //formMudanca.Show();
+            this.Hide();
+            formMudanca.ShowDialog();
+        }
+
+        private void btnAddAusencia_Click(object sender, EventArgs e)
+        {
+            AdicionarAusencia formAusencia = new AdicionarAusencia(usuario.Id);
+            formAusencia.FormClosed += (object s, FormClosedEventArgs eForm) =>
+            {
+                this.Show();
+                getUsuario();
+            };
+
+            this.Hide();
+            formAusencia.ShowDialog();
+
+        }
+
+        private async void getUsuario()
+        {
+            this.usuario = await UsuarioService.getUsuario(idUsuario);
         }
     }
 }

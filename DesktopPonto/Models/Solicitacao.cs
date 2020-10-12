@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DesktopPonto.Models
 {
-    class Solicitacao
+    public class Solicitacao
     {
         public long Id { get; set; }
         public bool IsAplicado { get; set; }
         public DateTime NovoHorario { get; set; }
+
+        public long IdPonto { get; set; }
 
     }
 }

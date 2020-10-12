@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblDataPonto = new System.Windows.Forms.Label();
+            this.btnSolicitar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtHorario = new System.Windows.Forms.MaskedTextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblDataPonto
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "09/04/2020";
+            this.lblDataPonto.AutoSize = true;
+            this.lblDataPonto.Location = new System.Drawing.Point(33, 107);
+            this.lblDataPonto.Name = "lblDataPonto";
+            this.lblDataPonto.Size = new System.Drawing.Size(0, 13);
+            this.lblDataPonto.TabIndex = 0;
             // 
-            // button1
+            // btnSolicitar
             // 
-            this.button1.Location = new System.Drawing.Point(238, 102);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Solicitar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSolicitar.Location = new System.Drawing.Point(238, 102);
+            this.btnSolicitar.Name = "btnSolicitar";
+            this.btnSolicitar.Size = new System.Drawing.Size(75, 23);
+            this.btnSolicitar.TabIndex = 1;
+            this.btnSolicitar.Text = "Solicitar";
+            this.btnSolicitar.UseVisualStyleBackColor = true;
+            this.btnSolicitar.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -62,26 +63,39 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Solicitar Ajuste";
             // 
-            // maskedTextBox1
+            // mtHorario
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(149, 63);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(37, 20);
-            this.maskedTextBox1.TabIndex = 4;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.mtHorario.Location = new System.Drawing.Point(149, 63);
+            this.mtHorario.Mask = "00:00";
+            this.mtHorario.Name = "mtHorario";
+            this.mtHorario.Size = new System.Drawing.Size(37, 20);
+            this.mtHorario.TabIndex = 4;
+            this.mtHorario.ValidatingType = typeof(System.DateTime);
+            this.mtHorario.TextChanged += new System.EventHandler(this.mtHorario_TextChanged);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(132, 102);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.button2_Click);
             // 
             // SolicitaMudanca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 143);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.mtHorario);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSolicitar);
+            this.Controls.Add(this.lblDataPonto);
             this.Name = "SolicitaMudanca";
             this.Text = "SolicitaMudanca";
+            this.Load += new System.EventHandler(this.SolicitaMudanca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,9 +103,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblDataPonto;
+        private System.Windows.Forms.Button btnSolicitar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtHorario;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

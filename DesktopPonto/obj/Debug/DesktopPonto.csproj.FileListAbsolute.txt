@@ -18,3 +18,8 @@ C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\Desk
 C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.CoreCompileInputs.cache
 C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
 C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.AdicionarAusencia.resources
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.SolicitaMudanca.resources
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\bin\Debug\Newtonsoft.Json.dll
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\bin\Debug\Newtonsoft.Json.xml
+C:\Users\HP\Documents\csharp-projeto\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.CopyComplete
