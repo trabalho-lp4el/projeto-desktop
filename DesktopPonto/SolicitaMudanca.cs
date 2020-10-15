@@ -15,7 +15,7 @@ namespace DesktopPonto
     public partial class SolicitaMudanca : Form
     {
         private Ponto ponto;
-        private Solicitacao solicitacao;
+        private Solicitacao solicitacao = new Solicitacao();
         public SolicitaMudanca()
         {
             InitializeComponent();
@@ -64,7 +64,8 @@ namespace DesktopPonto
                 return;
             }
             var novoHorario = $"{ponto.getDataPonto()} {mtHorario.Text}";
-            solicitacao.NovoHorario = DateTime.ParseExact(novoHorario, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+            //DateTime.TryParseExact(novoHorario, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None ,out var dummy);
+            solicitacao.NovoHorario = DateTime.Parse(novoHorario);
             solicitacao.PontoId = ponto.Id;
            var response = await SolicitacaoService.postSolicitacao(solicitacao);
 

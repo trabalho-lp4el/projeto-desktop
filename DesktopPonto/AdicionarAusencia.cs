@@ -29,17 +29,19 @@ namespace DesktopPonto
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var data = $"${txtDataAusencia.Text} ${txtHoraAusencia.Text}";
-            var isValid = TimeSpan.TryParse(data, out var dummy);
+            var data = $"{txtDataAusencia.Text} {txtHoraAusencia.Text}";
+            var isValid = DateTime.TryParseExact(data, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dummy);
 
             if(!isValid)
             {
                 MessageBox.Show("Data informada inválida");
+                return;
             }
 
             var pontoAusencia = new Ponto();
             pontoAusencia.IsAusencia = true;
-            pontoAusencia.Horario = DateTime.ParseExact(data, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            pontoAusencia.UsuarioId = idUsuario;
+            pontoAusencia.Horario = DateTime.ParseExact(data, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
 
             try
             {

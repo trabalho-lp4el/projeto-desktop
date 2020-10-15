@@ -19,7 +19,7 @@ namespace DesktopPonto.Models
         {
             foreach (Solicitacao s in Solicitacoes)
             {
-                if(s.IsAplicado)
+                if(!s.IsAplicado)
                 {
                     return true;
                 }

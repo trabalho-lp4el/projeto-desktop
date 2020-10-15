@@ -21,34 +21,14 @@ namespace DesktopPonto
         {
             
             InitializeComponent();
+
         }
 
-        public void criaUsuario()
-        {
-            usuario.Nome = "Danilo";
-            usuario.Matricula = "69420";
-            List<Ponto> pontos = new List<Ponto>();
-            for(int i = 0; i < 5; i++)
-            {
-                for(int x = 0; x < 4; x++)
-                {
-                    Ponto ponto = new Ponto();
-                    ponto.Id = i + x + 1;
-                    ponto.Horario = new DateTime(2020, 5, i + 1, x + 8, 30, 0);
-                    pontos.Add(ponto);
-
-                }
-                
-
-            }
-            usuario.Pontos = pontos;
-        }
-
-        private void TelaPrincipal_Load(object sender, EventArgs e)
+        private async void TelaPrincipal_Load(object sender, EventArgs e)
         {
             flPontos.SuspendLayout();
-            //criaUsuario();
-            Task.Run(()=> getUsuario()).Wait();
+            this.usuario = await getUsuario();
+            setaValores();
             flPontos.ResumeLayout(false);
 
         }
@@ -83,11 +63,11 @@ namespace DesktopPonto
                 labelData.Font = new Font("Arial", 12, FontStyle.Regular);
                 labelData.Size = new Size(88, 20);
 
-                Label labelHorario = geraLabel(ponto.getHorarioPonto(), 101, 23);
+                Label labelHorario = geraLabel(ponto.IsAusencia ? "Ausencia": ponto.getHorarioPonto(), 101, 23);
                 labelHorario.Font = new Font("Arial", 20, FontStyle.Regular);
                 labelHorario.Size = new Size(82,31);
 
-                Button botaoSolicitar = geraBotaoSolicitacao();
+                Button botaoSolicitar = geraBotaoSolicitacao(ponto);
                 botaoSolicitar.Size = new Size(93, 23);
 
                 var innerPonto = ponto;
@@ -116,10 +96,11 @@ namespace DesktopPonto
 
         }
 
-        private Button geraBotaoSolicitacao()
+        private Button geraBotaoSolicitacao(Ponto ponto)
         {
             Button button = new Button();
-            button.Text = "Solicitar Ajuste";
+            button.Text = ponto.possuiSolicitacaoAtiva() ? "Possui solic." : "Solicitar Ajuste";
+            button.Enabled = !ponto.possuiSolicitacaoAtiva();
             button.Location = new Point(2, 39);
             return button;
         }
@@ -156,7 +137,7 @@ namespace DesktopPonto
             formMudanca.FormClosed += async (object senderForm, FormClosedEventArgs eForm) =>
             {
                 this.Show();
-                Task.Run(() => getUsuario()).Wait();
+                this.usuario = await getUsuario();
             };
             //formMudanca.Show();
             this.Hide();
@@ -166,10 +147,10 @@ namespace DesktopPonto
         private void btnAddAusencia_Click(object sender, EventArgs e)
         {
             AdicionarAusencia formAusencia = new AdicionarAusencia(usuario.Id);
-            formAusencia.FormClosed += (object s, FormClosedEventArgs eForm) =>
+            formAusencia.FormClosed += async (object s, FormClosedEventArgs eForm) =>
             {
                 this.Show();
-                Task.Run(() => getUsuario()).Wait();
+                this.usuario = await getUsuario();
             };
 
             this.Hide();
@@ -177,16 +158,15 @@ namespace DesktopPonto
 
         }
 
-        private async Task<Boolean> getUsuario()
+        private async Task<Usuario> getUsuario()
         {
             try
             {
-                this.usuario = await UsuarioService.getUsuario(idUsuario);
-                setaValores();
-                return true;
+                var usuario = await UsuarioService.getUsuario(idUsuario);
+                return usuario;
             } catch(Exception e)
             {
-                return false;
+                return null;
             }
             
         }
