@@ -50,3 +50,5 @@ D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.Cor
 D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.CopyComplete
 D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
 D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
+D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Views.BemVindo.resources
+D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Views.CadastreSe.resources
