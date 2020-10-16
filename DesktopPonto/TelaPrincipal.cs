@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -27,14 +28,22 @@ namespace DesktopPonto
         private async void TelaPrincipal_Load(object sender, EventArgs e)
         {
             flPontos.SuspendLayout();
-            this.usuario = await getUsuario();
-            setaValores();
+            this.setaValores();
             flPontos.ResumeLayout(false);
 
         }
 
-        private void setaValores()
+        private async void setaValores()
         {
+            this.usuario = await getUsuario();
+
+            Control[] gps = flPontos.Controls.Find("ponto", true);            
+
+            foreach (Control gp in gps)
+            {
+                flPontos.Controls.Remove(gp);
+            }
+
             if(usuario == null)
             {
                 return;
@@ -54,9 +63,11 @@ namespace DesktopPonto
             {
                 return;
             }
+
             usuario.Pontos.ForEach(ponto =>
             {
                 GroupBox gpBox = new GroupBox();
+                gpBox.Name = "ponto";
                 gpBox.Size = new Size(200, 73);
 
                 Label labelData = geraLabel(ponto.getDataPonto(), 6, 16);
@@ -84,7 +95,6 @@ namespace DesktopPonto
 
                 flPontos.Controls.Add(gpBox);
             });
-            
         }
 
         private Label geraLabel(string texto, int x, int y)
@@ -137,7 +147,7 @@ namespace DesktopPonto
             formMudanca.FormClosed += async (object senderForm, FormClosedEventArgs eForm) =>
             {
                 this.Show();
-                this.usuario = await getUsuario();
+                this.setaValores();
             };
             //formMudanca.Show();
             this.Hide();
@@ -150,7 +160,7 @@ namespace DesktopPonto
             formAusencia.FormClosed += async (object s, FormClosedEventArgs eForm) =>
             {
                 this.Show();
-                this.usuario = await getUsuario();
+                this.setaValores();
             };
 
             this.Hide();
@@ -169,6 +179,31 @@ namespace DesktopPonto
                 return null;
             }
             
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var data = getCurrentTime().ToString("dd/MM/yyyy HH:mm");
+
+            var ponto = new Ponto();
+            ponto.IsAusencia = false;
+            ponto.UsuarioId = idUsuario;
+            ponto.Horario = DateTime.ParseExact(data, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+
+            try
+            {
+                var response = await PontoService.postPonto(ponto);
+                if (response == null)
+                {
+                    MessageBox.Show("Houve um problema ao bater ponto");
+                    return;
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
+            this.setaValores();
         }
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AusenciaService.cs" />
+    <Compile Include="Service\PontoService.cs" />
     <Compile Include="Service\SolicitacaoService.cs" />
     <Compile Include="Service\UsuarioService.cs" />
     <Compile Include="SolicitaMudanca.cs">
