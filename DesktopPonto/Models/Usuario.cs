@@ -13,6 +13,8 @@ namespace DesktopPonto.Models
         public virtual List<Ponto> Pontos { get; set; }
         public string Matricula { get; set; }
 
+        public string Senha { get; set; }
+
 
     }
 }

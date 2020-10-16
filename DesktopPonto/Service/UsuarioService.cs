@@ -25,5 +25,14 @@ namespace DesktopPonto.Service
             }
             
         }
+
+        public static async Task<Usuario> postLogin(Usuario usuario)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync($"http://localhost:5000/usuario/login", content);
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Usuario>(responseBody);
+        }
     }
 }

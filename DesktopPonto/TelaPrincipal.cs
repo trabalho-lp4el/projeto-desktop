@@ -25,6 +25,13 @@ namespace DesktopPonto
 
         }
 
+        public TelaPrincipal(Usuario u)
+        {
+            this.usuario = u;
+            this.idUsuario = u.Id;
+            InitializeComponent();
+        }
+
         private async void TelaPrincipal_Load(object sender, EventArgs e)
         {
             flPontos.SuspendLayout();
@@ -204,6 +211,11 @@ namespace DesktopPonto
                 Console.WriteLine(err.Message);
             }
             this.setaValores();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
