@@ -1,4 +1,5 @@
 ﻿using DesktopPonto.Models;
+using DesktopPonto.Service;
 using DesktopPonto.Views;
 using System;
 using System.Collections.Generic;
@@ -18,26 +19,31 @@ namespace DesktopPonto
             InitializeComponent();
         }
 
-        private void btnEntrar_Click(object sender, EventArgs e)
+        private async void btnEntrar_Click(object sender, EventArgs e)
         {
-            Controller controle = new Controller();
-            controle.acessar(txbLogin.Text, txbSenha.Text);
-            if (controle.mensagem.Equals(""))
+            Usuario usuario = new Usuario();
+            usuario.Matricula = txbLogin.Text;
+            usuario.Senha = txbSenha.Text;
+
+            try
             {
-                if (controle.tem)
+                var response = await UsuarioService.postLogin(usuario);
+                if (response == null)
                 {
-                    MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BemVindo bv = new BemVindo();
-                    bv.Show();
+                    MessageBox.Show("Houve um problema no login ou senha");
+                    return;
                 }
-                else
-                {
-                   //MessageBox.Show("Login não encontrado", "Verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }else
-            {
-                MessageBox.Show(controle.mensagem);
+                TelaPrincipal tela = new TelaPrincipal(response);
+                tela.Show();
+                this.Hide();
             }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
+
+
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)

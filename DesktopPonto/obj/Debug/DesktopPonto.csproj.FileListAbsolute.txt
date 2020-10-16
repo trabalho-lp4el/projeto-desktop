@@ -52,3 +52,10 @@ D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.exe
 D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.pdb
 D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Views.BemVindo.resources
 D:\Projects\LP4EL\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.Views.CadastreSe.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\bin\Debug\DesktopPonto.exe.config
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.AdicionarAusencia.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.SolicitaMudanca.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.TelaPrincipal.resources
+C:\Users\user\Desktop\projeto-desktop\DesktopPonto\obj\Debug\DesktopPonto.csproj.CopyComplete
